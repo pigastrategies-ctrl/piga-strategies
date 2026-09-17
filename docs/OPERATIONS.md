@@ -2,27 +2,51 @@
 
 ## Objective
 
-Prevent a broad portfolio from becoming a collection of neglected half-built projects while preserving the option value of good ideas.
+Build fast, validate early, and move every active PIGA toward a monetizable funnel without allowing portfolio breadth to become permanent partial completion.
 
 ## Attention allocation
 
-PIGA Strategies uses a hard WIP constraint: **maximum three BUILD assets**.
+PIGA Strategies uses a hard WIP constraint: **maximum three active PIGAs**.
+
+The current pattern is intentionally asymmetric:
+
+- one asset may be in **MVP REVENUE VALIDATION**
+- one or two assets may be in **BUILD** approaching that gate
+- everything else remains **SHELF**, **MAINTAIN**, or otherwise outside active development
 
 SHELF is a legitimate state, not a failure state. Shelved assets retain brand, documentation, code and accumulated learning without consuming recurring execution attention.
 
+Portfolio infrastructure such as Hustle Depot does not automatically consume an active PIGA slot. It should remain thin and primarily absorb outputs from real portfolio work rather than becoming an independent speculative build.
+
+## The evidence gate
+
+Every active PIGA must be moving toward one concrete external signal. Depending on the business, that signal may be:
+
+- revenue
+- a paid conversion
+- an affiliate sale
+- a qualified lead
+- repeated product usage
+- a high-intent submission
+- another measurable behavior that materially informs the next commercial decision
+
+The point is not to finish a product. The point is to build **enough product to expose the important commercial uncertainty to reality**.
+
+Once the product can support that test, default to distribution and evidence collection rather than additional features.
+
 ## Active-asset requirement
 
-Every BUILD or SELL PIGA must have:
+Every active PIGA must have:
 
 - one named lifecycle state
-- one current monetizable milestone
+- one current monetizable/evidence milestone
 - one measurable success condition
-- an up-to-date `docs/STATUS.md`
+- an up-to-date product status record
 - an executable Linear backlog
 - attributable runtime costs
 - commercially meaningful analytics when live
 
-If the team cannot state the current milestone in one sentence, the asset is not sufficiently groomed for active development.
+If the current milestone cannot be stated in one sentence, the asset is not sufficiently groomed for active development.
 
 ## Decision hierarchy
 
@@ -30,17 +54,41 @@ When deciding what to work on, prefer the fastest, cheapest and most reversible 
 
 Priority order generally follows:
 
-1. prove someone will take the monetizable action
-2. prove the product delivers the promised value
-3. prove acquisition can repeat economically
-4. automate repeated manual work
-5. scale infrastructure only when constrained
+1. create the smallest complete value loop
+2. connect it to a monetizable funnel
+3. put real users through it
+4. measure what they do
+5. improve based on evidence
+6. automate repeated proven work
+7. scale infrastructure only when constrained
+
+## Factory development
+
+The PIGA factory should emerge from repeated real builds rather than be designed as a speculative platform.
+
+When Exam Sim, AI HQ, Starterpak or another real PIGA solves a reusable problem, capture the solution. When a problem has been solved repeatedly, standardize it into the common chassis.
+
+Likely reusable layers include:
+
+- project/repository scaffolding
+- Supabase setup and schema patterns
+- authentication where required
+- Stripe/payment patterns
+- analytics event conventions
+- email/lifecycle patterns
+- AI model invocation and prompt/config management
+- ingestion/retrieval patterns
+- deployment/configuration conventions
+- marketing attribution
+- transfer documentation
+
+The target state is that future PIGAs become increasingly **configuration on a proven chassis** and can eventually be instantiated and operated substantially by agents.
 
 ## Documentation discipline
 
-GitHub is the canonical institutional record. Linear may contain implementation tasks and chat may contain exploration, but durable decisions should be reflected in the relevant repository.
+GitHub is the canonical institutional record. Linear contains execution tasks and chat may contain exploration, but durable decisions should be reflected in the relevant repository.
 
-Minimum product-repo documentation:
+Minimum product-repo documentation target:
 
 - `docs/STATUS.md`
 - `docs/PRODUCT.md`
@@ -48,22 +96,38 @@ Minimum product-repo documentation:
 - `docs/ROADMAP.md`
 - `docs/OPERATIONS.md`
 
-`STATUS.md` should be deliberately short and current. Historical detail belongs in version control rather than accumulating into an unreadable status document.
+`STATUS.md` should remain short and current. Historical detail belongs in version control.
+
+Hustle Depot may additionally codify reusable factory knowledge for public/commercial consumption, but it does not replace GitHub as the institutional source of truth.
 
 ## Commercial instrumentation
 
-Do not optimize generic engagement when a monetizable event exists. Instrument the funnel from qualified arrival through the revenue trigger.
+Instrumentation is a prerequisite for increasingly automated portfolio operation. The system needs to understand both **what users do inside a PIGA** and **which acquisition activity produced those users**.
 
-Each PIGA should eventually expose enough data to understand:
+Standard direction:
+
+- **PostHog** — product/site analytics: acquisition attribution, meaningful events, funnels, conversion, retention, session replay, behavioral diagnosis and experimentation.
+- **Metricool** — cross-channel marketing/social publishing analytics and campaign/post performance where supported.
+- **Supabase** — product/runtime data and durable business records.
+- **n8n** — automation/orchestration between systems where useful.
+
+Do not add analytics products merely for dashboard redundancy. Standardize commercially meaningful events across PIGAs so future agents can reason over comparable signals.
+
+Each live PIGA should eventually expose enough data to understand:
 
 - qualified traffic/users
-- activation/value event
+- acquisition source / campaign / content
+- activation or core value event
 - monetization trigger
 - conversion rate
 - revenue
 - variable cost / contribution where applicable
-- acquisition source
-- repeat behavior or retention where applicable
+- repeat behavior / retention where applicable
+- meaningful abandonment or failure points
+
+The eventual goal is a closed learning loop:
+
+**Marketing activity → qualified traffic → product behavior → monetization → economics → next action**
 
 ## Build-to-transfer discipline
 
@@ -73,6 +137,14 @@ Third-party credentials should be documented and re-keyable. Automations should 
 
 ## Review cadence
 
-Use portfolio reviews to make allocation decisions, not to create status theater. Review active assets frequently enough to catch stalled milestones; review SHELF assets only when new evidence or capacity creates a reason to reconsider them.
+Portfolio reviews exist to make allocation decisions, not create status theater.
 
-The governing question is always: **what evidence justifies continuing to allocate attention to this asset?**
+For each active asset ask:
+
+1. What gate are we trying to cross?
+2. What evidence do we have?
+3. What is the smallest action that produces the next useful evidence?
+4. Are we building something that could already be tested?
+5. Did this build produce reusable factory knowledge worth codifying?
+
+The governing question is: **what evidence justifies continuing to allocate attention to this asset?**
